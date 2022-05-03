@@ -1,11 +1,10 @@
 README
 ======
 
-This is the README file for a port of NuttX to the ST Micro B-G474E-DPOW1
-Discovery kit with STM32G474RE MCU. For more information about this board,
-see:
+This is the README file for a port of NuttX to the ST Micro Nucleo G474RE
+board with STM32G474RE MCU. For more information about this board, see:
 
-  https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-mpu-eval-tools/stm32-mcu-mpu-eval-tools/stm32-discovery-kits/b-g474e-dpow1.html
+  https://www.st.com/en/evaluation-tools/nucleo-g474re.html
 
 Contents
 ========
@@ -19,7 +18,6 @@ Contents
     - GPIOs
     - Buttons
     - LEDs
-    - RGB Power LED
   - Serial Consoles
   - FLASH Bootloader Support
   - Configurations
@@ -80,29 +78,17 @@ Hardware
 
   Buttons
   -------
-  The board has 5 user buttons in the form of a 4-direction "joystick" with a
-  selection button (pressing down on the "joystick").
+  The board has 1 user button.
 
   LEDs
   ----
-  The board has 4 user LEDs.
-
-  RGB Power LED
-  -------------
-  The board has a super bright RGB power LED.
-
-  Caution: For eye safety, ensure that the power LED is covered by the
-  diffuser that comes installed over it.
+  The board has 1 user LED.
 
 Serial Consoles
 ===============
 
-  The MCU's USART3 is connected to the on-board STLINK-V3E and exposed to
-  the PC as a Virtual COM Port over the same Micro-USB Type B connection used
-  for programming/debugging.
-
-  On Debian Linux, this shows up as /dev/ttyACM0. Other operating systems may
-  differ.
+  The MCU's USART3 is exposed to the pin 1 and 2 of the "Morpho connector" CN7
+  on the board.
 
 FLASH Bootloader Support
 ========================

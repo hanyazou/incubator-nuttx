@@ -1,5 +1,5 @@
 /****************************************************************************
- * boards/arm/stm32/b-g474e-dpow1/src/stm32_userleds.c
+ * boards/arm/stm32/nucleo-g474re/src/stm32_userleds.c
  *
  *  Licensed to the Apache Software Foundation (ASF) under one or more
  *  contributor license agreements.  See the NOTICE file distributed with
@@ -31,7 +31,7 @@
 #include <arch/board/board.h>
 
 #include "stm32.h"
-#include "b-g474e-dpow1.h"
+#include "nucleo-g474re.h"
 
 #if !defined(CONFIG_ARCH_LEDS)
 
@@ -53,9 +53,6 @@ uint32_t board_userled_initialize(void)
   /* Configure LED GPIOs for output */
 
   stm32_configgpio(GPIO_LED1);
-  stm32_configgpio(GPIO_LED2);
-  stm32_configgpio(GPIO_LED3);
-  stm32_configgpio(GPIO_LED4);
   return BOARD_NLEDS;
 }
 
@@ -80,18 +77,6 @@ void board_userled(int led, bool ledon)
       case BOARD_LED1:
         stm32_gpiowrite(GPIO_LED1, ledon);
         break;
-
-      case BOARD_LED2:
-        stm32_gpiowrite(GPIO_LED2, ledon);
-        break;
-
-      case BOARD_LED3:
-        stm32_gpiowrite(GPIO_LED3, ledon);
-        break;
-
-      case BOARD_LED4:
-        stm32_gpiowrite(GPIO_LED4, ledon);
-        break;
     }
 }
 
@@ -114,9 +99,6 @@ void board_userled(int led, bool ledon)
 void board_userled_all(uint32_t ledset)
 {
   stm32_gpiowrite(GPIO_LED1, (ledset & BOARD_LED1_BIT) != 0);
-  stm32_gpiowrite(GPIO_LED2, (ledset & BOARD_LED2_BIT) != 0);
-  stm32_gpiowrite(GPIO_LED3, (ledset & BOARD_LED3_BIT) != 0);
-  stm32_gpiowrite(GPIO_LED4, (ledset & BOARD_LED4_BIT) != 0);
 }
 
 #endif /* !CONFIG_ARCH_LEDS */

@@ -1,5 +1,5 @@
 /****************************************************************************
- * boards/arm/stm32/b-g474e-dpow1/src/b-g474e-dpow1.h
+ * boards/arm/stm32/nucleo-g474re/src/nucleo-g474re.h
  *
  *  Licensed to the Apache Software Foundation (ASF) under one or more
  *  contributor license agreements.  See the NOTICE file distributed with
@@ -18,8 +18,8 @@
  *
  ****************************************************************************/
 
-#ifndef __BOARDS_ARM_STM32_B_G474E_DPOW1_SRC_B_G474E_DPOW1_H
-#define __BOARDS_ARM_STM32_B_G474E_DPOW1_SRC_B_G474E_DPOW1_H
+#ifndef __BOARDS_ARM_STM32_NUCLEO_G474RE_SRC_NUCLEO_G474RE_H
+#define __BOARDS_ARM_STM32_NUCLEO_G474RE_SRC_NUCLEO_G474RE_H
 
 /****************************************************************************
  * Included Files
@@ -33,36 +33,27 @@
 
 /* LED definitions **********************************************************/
 
-/* The B-G474E-DPOW1 Discovery kit has four user LEDs:
+/* The NUCLEO G474RE board has three LEDs.  Two of these are controlled by
+ * logic on the board and are not available for software control:
  *
- * | Symbol     | PCB | Color  |
- * |------------|-----|--------|
- * | BOARD_LED1 | LD2 | Blue   |
- * | BOARD_LED2 | LD3 | Orange |
- * | BOARD_LED3 | LD4 | Green  |
- * | BOARD_LED4 | LD5 | Red    |
+ * LD1 COM:  LD1 default status is green.  LD1 turns to red to indicate that
+ *           communications are in progress between the PC and the
+ *           ST-LINK/V3.
+ * LD3 PWR:  green LED indicates that the board is powered.
  *
- * If CONFIG_ARCH_LEDS is not defined, then the user can control the LED.
+ * And one can be controlled by software:
  *
- * Pin assignments follow:
+ * User LD2: green LED is a user LED connected to the I/O PA5 of the
+ *           STM32G474RE.
+ *
+ * If CONFIG_ARCH_LEDS is not defined, then the user can control the LED in
+ * any way.  The following definition is used to access the LED.
  */
 
 #define GPIO_LED1                      (GPIO_OUTPUT | GPIO_PUSHPULL | \
                                         GPIO_SPEED_5MHz | \
                                         GPIO_OUTPUT_CLEAR | \
-                                        GPIO_PORTA | GPIO_PIN15)
-#define GPIO_LED2                      (GPIO_OUTPUT | GPIO_PUSHPULL | \
-                                        GPIO_SPEED_5MHz | \
-                                        GPIO_OUTPUT_CLEAR | \
-                                        GPIO_PORTB | GPIO_PIN1)
-#define GPIO_LED3                      (GPIO_OUTPUT | GPIO_PUSHPULL | \
-                                        GPIO_SPEED_5MHz | \
-                                        GPIO_OUTPUT_CLEAR | \
-                                        GPIO_PORTB | GPIO_PIN7)
-#define GPIO_LED4                      (GPIO_OUTPUT | GPIO_PUSHPULL | \
-                                        GPIO_SPEED_5MHz | \
-                                        GPIO_OUTPUT_CLEAR | \
-                                        GPIO_PORTB | GPIO_PIN5)
+                                        GPIO_PORTA | GPIO_PIN5)
 
 #define LED_DRIVER_PATH                "/dev/userleds"
 
@@ -74,4 +65,4 @@
  * Public Function Prototypes
  ****************************************************************************/
 
-#endif /* __BOARDS_ARM_STM32_B_G474E_DPOW1_SRC_B_G474E_DPOW1_H */
+#endif /* __BOARDS_ARM_STM32_NUCLEO_G474RE_SRC_NUCLEO_G474RE_H */

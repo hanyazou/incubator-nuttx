@@ -1,5 +1,5 @@
 /****************************************************************************
- * boards/arm/stm32/b-g474e-dpow1/src/stm32_autoleds.c
+ * boards/arm/stm32/nucleo-g474re/src/stm32_autoleds.c
  *
  *  Licensed to the Apache Software Foundation (ASF) under one or more
  *  contributor license agreements.  See the NOTICE file distributed with
@@ -32,7 +32,7 @@
 #include <arch/board/board.h>
 
 #include "stm32.h"
-#include "b-g474e-dpow1.h"
+#include "nucleo-g474re.h"
 
 #if defined(CONFIG_ARCH_LEDS)
 
@@ -46,12 +46,9 @@
 
 void board_autoled_initialize(void)
 {
-  /* Configure LED GPIOs for output */
+  /* Configure LED1 GPIO for output */
 
   stm32_configgpio(GPIO_LED1);
-  stm32_configgpio(GPIO_LED2);
-  stm32_configgpio(GPIO_LED3);
-  stm32_configgpio(GPIO_LED4);
 }
 
 /****************************************************************************
@@ -64,18 +61,6 @@ void board_autoled_on(int led)
     {
       case BOARD_LED1:
         stm32_gpiowrite(GPIO_LED1, true);
-        break;
-
-      case BOARD_LED2:
-        stm32_gpiowrite(GPIO_LED2, true);
-        break;
-
-      case BOARD_LED3:
-        stm32_gpiowrite(GPIO_LED3, true);
-        break;
-
-      case BOARD_LED4:
-        stm32_gpiowrite(GPIO_LED4, true);
         break;
     }
 }
@@ -90,18 +75,6 @@ void board_autoled_off(int led)
     {
       case BOARD_LED1:
         stm32_gpiowrite(GPIO_LED1, false);
-        break;
-
-      case BOARD_LED2:
-        stm32_gpiowrite(GPIO_LED2, false);
-        break;
-
-      case BOARD_LED3:
-        stm32_gpiowrite(GPIO_LED3, false);
-        break;
-
-      case BOARD_LED4:
-        stm32_gpiowrite(GPIO_LED4, false);
         break;
     }
 }

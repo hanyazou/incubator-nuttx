@@ -1,5 +1,5 @@
 /****************************************************************************
- * boards/arm/stm32/b-g474e-dpow1/src/stm32_appinit.c
+ * boards/arm/stm32/nucleo-g474re/src/stm32_appinit.c
  *
  *  Licensed to the Apache Software Foundation (ASF) under one or more
  *  contributor license agreements.  See the NOTICE file distributed with
@@ -30,7 +30,7 @@
 #include <nuttx/board.h>
 #include <nuttx/leds/userled.h>
 
-#include "b-g474e-dpow1.h"
+#include "nucleo-g474re.h"
 
 /****************************************************************************
  * Pre-processor Definitions
