@@ -29,7 +29,7 @@
 #include "chip.h"
 
 #if defined(CONFIG_STM32_STM32L15XX) || defined(CONFIG_STM32_STM32F10XX) || defined(CONFIG_STM32_STM32F30XX) \
-    || defined(CONFIG_STM32_STM32F37XX)
+    || defined(CONFIG_STM32_STM32F37XX) || defined(CONFIG_STM32_STM32G47XX)
 
 /****************************************************************************
  * Pre-processor Definitions
