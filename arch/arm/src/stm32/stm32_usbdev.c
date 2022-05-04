@@ -3651,6 +3651,13 @@ static void stm32_hwsetup(struct stm32_usbdev_s *priv)
 {
   int epno;
 
+#ifdef CONFIG_STM32_STM32G47XX
+  /*
+   * FIXME, need to reset USB block here for Nucleo G474RE
+   */
+  putreg32(RCC_APB1RSTR1_USBRST, STM32_RCC_APB1RSTR1);
+#endif
+
   /* Power the USB controller, put the USB controller into reset, disable
    * all USB interrupts
    */
