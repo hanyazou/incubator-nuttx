@@ -3320,13 +3320,13 @@ config STM32_USB
 	bool "USB Device"
 	default n
 	depends on STM32_HAVE_USBDEV
-	select USBDEV
+	select STM32_USBDEV
 
 config STM32_UCPD
 	bool "UCPD (USB Type C Power Delivery)"
 	default n
 	depends on STM32_HAVE_UCPD
-	select USBDEV
+	select STM32_USBDEV
 
 config STM32_LCD
 	bool "Segment LCD"
@@ -10712,6 +10712,23 @@ config STM32_ETHMAC_REGDEBUG
 
 endmenu # Ethernet MAC configuration
 
+config STM32_USBDEV
+	bool "Enable USB Device Support"
+	depends on STM32_USB
+	default n
+	select USBDEV
+
+menu "USB Device Debug Configuration"
+	depends on STM32_USBDEV
+
+config STM32_USBDEV_REGDEBUG
+	bool "Register-Level Debug"
+	default n
+	depends on STM32_USBDEV && DEBUG_USB_INFO
+	---help---
+		Enable very low-level register access debug.
+endmenu
+
 config STM32_USBHOST
 	bool "Enable USB Host Support"
 	depends on STM32_OTGFS || STM32_OTGHS
@@ -10822,8 +10839,6 @@ config STM32_USBHOST_PKTDUMP
 		Dump all incoming and outgoing USB packets.
 
 endmenu
-
-comment "USB Device Configuration"
 
 menu "OTG Configuration"
 	depends on STM32_OTGFS

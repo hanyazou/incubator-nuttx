@@ -763,14 +763,14 @@ static void stm32_dumpep(int epno)
 static void stm32_checksetup(void)
 {
   uint32_t cfgr     = getreg32(STM32_RCC_CFGR);
-  uint32_t apb1rstr = getreg32(STM32_RCC_APB1RSTR);
-  uint32_t apb1enr  = getreg32(STM32_RCC_APB1ENR);
+  uint32_t apb1rstr = getreg32(STM32_RCC_APB1RSTR1);
+  uint32_t apb1enr  = getreg32(STM32_RCC_APB1ENR1);
 
   uinfo("CFGR: %08x APB1RSTR: %08x APB1ENR: %08x\n",
          cfgr, apb1rstr, apb1enr);
 
-  if ((apb1rstr & RCC_APB1RSTR_USBRST) != 0 ||
-      (apb1enr & RCC_APB1ENR_USBEN) == 0)
+  if ((apb1rstr & RCC_APB1RSTR1_USBRST) != 0 ||
+      (apb1enr & RCC_APB1ENR1_USBEN) == 0)
     {
       uerr("ERROR: USB is NOT setup correctly\n");
     }
