@@ -3640,6 +3640,15 @@ static void stm32_hwreset(struct stm32_usbdev_s *priv)
 
   stm32_setimask(priv, STM32_CNTR_SETUP,
                 (USB_CNTR_ALLINTS & ~STM32_CNTR_SETUP));
+
+#ifdef CONFIG_STM32_STM32G47XX
+  /*
+   * FIXME, CONFIG_STM32_HAVE_USB_BCDR should be defined in Kconfig
+   */
+  /* Enable DP Pull-UP */
+  modifyreg16(STM32_USB_BCDR, USB_BCDR_DPPU, USB_BCDR_DPPU);
+#endif
+
   stm32_dumpep(EP0);
 }
 
@@ -3653,9 +3662,15 @@ static void stm32_hwsetup(struct stm32_usbdev_s *priv)
 
 #ifdef CONFIG_STM32_STM32G47XX
   /*
-   * FIXME, need to reset USB block here for Nucleo G474RE
+   * FIXME, enable HSI48 clock for USB block should be done some where else
    */
-  putreg32(RCC_APB1RSTR1_USBRST, STM32_RCC_APB1RSTR1);
+  modifyreg32(STM32_RCC_CRRCR, RCC_CRRCR_HSI48ON, RCC_CRRCR_HSI48ON);
+
+  /* Wait till HSI48 is ready */
+  while(!(getreg32(STM32_RCC_CRRCR) & RCC_CRRCR_HSI48RDY))
+    {
+      /* nothing to do here */
+    }
 #endif
 
   /* Power the USB controller, put the USB controller into reset, disable

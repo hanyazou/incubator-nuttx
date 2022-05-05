@@ -57,6 +57,8 @@
 #define STM32_USB_FNR_OFFSET         0x0048  /* USB frame number register (16-bits) */
 #define STM32_USB_DADDR_OFFSET       0x004c  /* USB device address (16-bits) */
 #define STM32_USB_BTABLE_OFFSET      0x0050  /* Buffer table address (16-bits) */
+#define STM32_USB_LPMCSR_OFFSET      0x0054  /* LPM control and status register (16-bits) */
+#define STM32_USB_BCDR_OFFSET        0x0058  /* Battery charging detector address (16-bits) */
 
 /* Buffer Descriptor Table (Relatative to BTABLE address) */
 
@@ -92,6 +94,8 @@
 #define STM32_USB_FNR                (STM32_USB_BASE+STM32_USB_FNR_OFFSET)
 #define STM32_USB_DADDR              (STM32_USB_BASE+STM32_USB_DADDR_OFFSET)
 #define STM32_USB_BTABLE             (STM32_USB_BASE+STM32_USB_BTABLE_OFFSET)
+#define STM32_USB_LPMCSR             (STM32_USB_BASE+STM32_USB_LPMCSR_OFFSET)
+#define STM32_USB_BCDR               (STM32_USB_BASE+STM32_USB_BCDR_OFFSET)
 
 /* Buffer Descriptor Table (Relatative to BTABLE address) */
 
@@ -195,6 +199,14 @@
 
 #define USB_BTABLE_SHIFT             (3)       /* Bits 15:3: Buffer Table */
 #define USB_BTABLE_MASK              (0x1fff << USB_BTABLE_SHIFT)
+
+/* LPM control and status register */
+
+#define USB_LPMCSR_
+
+/* Battery charging detector */
+
+#define USB_BCDR_DPPU                (1 << 15) /* Bit 15: DPpull-upcontrol */
 
 /* Transmission buffer address */
 
