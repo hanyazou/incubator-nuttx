@@ -169,6 +169,7 @@ int arm_hardfault(int irq, void *context, void *arg)
       hfalert("\tDebug event\n");
     }
 
+  dbg_flush();
   up_irq_save();
   PANIC();
   return OK;

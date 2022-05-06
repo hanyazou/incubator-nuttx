@@ -559,6 +559,8 @@ static int uart_open(FAR struct file *filep)
   uint8_t           tmp;
   int               ret;
 
+  dbg_flush();
+
   /* If the port is the middle of closing, wait until the close is finished.
    * If a signal is received while we are waiting, then return EINTR.
    */
