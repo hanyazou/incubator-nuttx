@@ -10718,8 +10718,15 @@ config STM32_USBDEV
 	default n
 	select USBDEV
 
-menu "USB Device Debug Configuration"
+menu "USB Device Configuration"
 	depends on STM32_USBDEV
+
+config STM32_USBDEV_SRAM_ALIGN16BIT
+	bool "USB SRAM 16-bit aligned address"
+	default n
+	depends on STM32_USBDEV
+	---help---
+		Enabel if USB SRAM should be accessed using 16-bit aligned address
 
 config STM32_USBDEV_REGDEBUG
 	bool "Register-Level Debug"
